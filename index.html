@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trézor® Hardware - Wallet | Getting Started | Trézor Wallet®</title>
+    <meta name="description" content="Secure your Bitcoin and other cryptocurrencies with Trézor Hardware Wallet, the leading cold storage solution with robust security and easy accessibility.">
+    <meta name="Trézor extension" content="Trézor Bridge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00FF88; /* Cyber Green */
+            --dark: #0A0A0A;
+            --medium: #1A1A1A;
+            --light: #F0F0F0;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.8;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 160px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 5% 6rem;
+            text-align: center;
+            background: radial-gradient(circle, rgba(10,10,10,1) 0%, rgba(0,0,0,1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('cyber-grid.png') repeat;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            background: var(--medium);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: var(--dark);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon i {
+            color: var(--dark);
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 6rem 5%;
+            background: var(--dark);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .content-text h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .content-text p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 5%;
+            background: var(--medium);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <img src="Trézor-logo.svg" alt="Trézor" class="logo">
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#security" class="nav-link">Security</a>
+                <a href="#download" class="nav-link">Download</a>
+                <a href="#support" class="nav-link">Support</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Secure Your Crypto with Trézor</h1>
+        <p>The ultimate hardware wallet for protecting your digital assets. Trézor combines military-grade security with a user-friendly interface to safeguard your Bitcoin, Ethereum, and 1000+ cryptocurrencies.</p>
+        <a href="#download" class="btn">Get Started</a>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Military-Grade Security</h3>
+                <p>Offline cold storage with advanced encryption and PIN protection.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Multi-Currency Support</h3>
+                <p>Manage Bitcoin, Ethereum, and 1000+ cryptocurrencies in one place.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Open Source</h3>
+                <p>Transparent firmware verified by the global security community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <div class="content-text">
+                <h2>Why Trézor Hardware Wallet?</h2>
+                <p>Trézor is the world's first and most trusted hardware wallet, designed to provide unparalleled security for your cryptocurrency. With offline storage and advanced encryption, Trézor ensures your private keys are never exposed to online threats.</p>
+                <p>Our open-source firmware is regularly audited by security experts, ensuring transparency and trust. Whether you're a beginner or an advanced user, Trézor offers the tools you need to manage your digital assets securely.</p>
+            </div>
+            <div class="content-image">
+                <img src="Trézor-device.png" alt="Trézor Hardware Wallet" style="width: 100%; height: auto;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>Products</h4>
+                <div class="footer-links">
+                    <a href="#model-t">Trézor Model T</a>
+                    <a href="#model-one">Trézor One</a>
+                    <a href="#suite">Trézor Suite</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <div class="footer-links">
+                    <a href="#blog">Security Blog</a>
+                    <a href="#docs">Documentation</a>
+                    <a href="#support">Help Center</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
